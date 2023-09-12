@@ -36,24 +36,24 @@ class SeleniumDriverManager:
         # chrome_options.add_argument('--headless')
         chrome_options.add_argument(f"--user-agent={user_agent.random}")
 
-        chrome_driver_path = '/путь/к/вашему/chromedriver.exe'
-        driver = webdriver.Chrome(executable_path=chrome_driver_path)
-
-        driver.get('https://www.google.com')
+        driver = webdriver.Chrome()
+        driver.get("https://visa.vfsglobal.com/blr/ru/pol/login")
+        time.sleep(2)
+        # driver.get('https://www.google.com')
 
         # Откройте новую вкладку
-        driver.execute_script("window.open('', '_blank');")
+        # driver.execute_script("window.open('', '_blank');")
 
         # Переключитесь на новую вкладку
-        driver.switch_to.window(driver.window_handles[1])
+        # driver.switch_to.window(driver.window_handles[1])
 
         # Теперь вы находитесь на новой вкладке, и можете взаимодействовать с ней
-        driver.get('https://www.example.com')
+        # driver.get('https://www.example.com')
 
         # Например, выполните поиск в Google и введите "Selenium"
-        search_box = driver.find_element_by_name('q')
-        search_box.send_keys('Selenium')
-        search_box.send_keys(Keys.RETURN)
+        # search_box = driver.find_element_by_name('q')
+        # search_box.send_keys('Selenium')
+        # search_box.send_keys(Keys.RETURN)
 
 
         # print(f'driver start...')
@@ -101,13 +101,11 @@ def login(driver, username, password):
         login_input.clear()
         login_input.send_keys(username)
         print(f'{username}: Entered username')
-        time.sleep(1)
+        time.sleep(2)
         password_input = wait.until(EC.presence_of_element_located((By.ID, "mat-input-1")))
         password_input.clear()
         password_input.send_keys(password)
         print(f'{username}: Entered password')
-        print("start sleep")
-        time.sleep(30)
     except:
         print('authorization failed')
 
